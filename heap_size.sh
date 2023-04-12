@@ -7,9 +7,9 @@ do
   PAGES=$(./pagemap2 $PID | grep -e 'file/shared 0 .*present 1.*heap' | wc -l)
   if [ $PAGES -ge 262144 ]
   then
-    SIZE=$(bc <<< "scale=3; $PAGES * 4 / 1024 / 1024") GB
+    SIZE="$(bc <<< \"scale=3; $PAGES * 4 / 1024 / 1024\") GB"
   else
-    SIZE=$(bc <<< "scale=3; $PAGES * 4 / 1024") MB
+    SIZE="$(bc <<< \"scale=3; $PAGES * 4 / 1024\") MB"
   fi
   echo $PID Heap size: $SIZE
 done
