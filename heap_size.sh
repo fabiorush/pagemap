@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PIDS=ps -elf | awk '{ if ($0 ~ /openresty\/nginx/) cont = 1; if (cont && $16 == "worker") print $4 }'
+PIDS=`ps -elf | awk '{ if ($0 ~ /openresty\/nginx/) cont = 1; if (cont && $16 == "worker") print $4 }'`
 
 for PID in PIDS
 do
